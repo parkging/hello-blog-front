@@ -17,24 +17,26 @@ function Home() {
   }, []);
   return (
     <div>
-      <h1>Movies</h1>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <ul>
-          {movies.map((movie) => {
-            // console.log(movie);
-            return (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                summary={movie.summary}
-                coverImage={movie.medium_cover_image}
-              />
-            );
-          })}
-        </ul>
+        <div>
+          <h1>Movies</h1>
+          <ul>
+            {movies.map((movie) => {
+              // console.log(movie);
+              return (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  summary={movie.summary}
+                  coverImage={movie.medium_cover_image}
+                />
+              );
+            })}
+          </ul>
+        </div>
       )}
     </div>
   );
