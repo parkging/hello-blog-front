@@ -10,7 +10,7 @@ import Detail from "./routes/Detail";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PBLIC_URL}>
       <Switch>
         <Route path="/movie/:id">
           <Detail />
