@@ -1,0 +1,13 @@
+.home {
+  font-family: "Noto Sans KR", sans-serif;
+}
+.header {
+  height: 50px !important;
+}
+.body {
+  min-height: calc(100vh - 198px) !important;
+}
+.footer {
+  height: 100px !important;
+  width: 100%;
+}

@@ -6,15 +6,12 @@ import {
   Switch,
 } from "react-router-dom";
 import Home from "./routes/Home";
-import Detail from "./routes/Detail";
 
 function App() {
   return (
-    <Router basename={process.env.PBLIC_URL}>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route path="/movie/:id">
-          <Detail />
-        </Route>
+        <Route path="/movie/:id">{/* <Detail /> */}</Route>
         <Route path="/">
           <Home />
         </Route>

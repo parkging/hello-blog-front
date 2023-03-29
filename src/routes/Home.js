@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import Movie from "../components/Movie";
+import styles from "./Home.module.css";
+import Header from "../components/header/Header";
+import Body from "../components/body/Body";
+import Footer from "../components/footer/Footer";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -20,26 +23,22 @@ function Home() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
-          <h1>Movies</h1>
-          <ul>
-            {movies.map((movie) => {
-              // console.log(movie);
-              return (
-                <Movie
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  summary={movie.summary}
-                  coverImage={movie.medium_cover_image}
-                />
-              );
-            })}
-          </ul>
+        <div class={styles.home}>
+          <div class={styles.header}>
+            <Header />
+          </div>
+          <div class={styles.body}>
+            <Body />
+          </div>
+          <div class={styles.footer}>
+            <Footer />
+          </div>
         </div>
       )}
     </div>
   );
 }
+
+<style></style>;
 
 export default Home;
