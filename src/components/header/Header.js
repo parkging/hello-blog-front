@@ -1,28 +1,28 @@
 function Header() {
   return (
     <div>
-      <nav class="navbar bg-dark" data-bs-theme="dark">
-        <div class="container-fluid row">
-          <div class="col-7">
-            <a class="navbar-brand ms-3" href="/">
+      <nav className="navbar bg-dark" data-bs-theme="dark">
+        <div className="container-fluid row">
+          <div className="col-7">
+            <a className="navbar-brand ms-3" href="/">
               박깅이의 블로그
             </a>
           </div>
 
-          <div class="col-3">
-            <a class="" href="/logout">
+          <div className="col-3">
+            <a className="" href="/logout">
               로그아웃
             </a>
           </div>
 
-          <div class="col-1 d-lg-none navbar-dark me-4">
+          <div className="col-1 d-lg-none navbar-dark me-4">
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
           </div>
         </div>

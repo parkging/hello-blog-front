@@ -1,31 +1,31 @@
 import Profile from "./Profile";
-import Category from "./Category";
-import CategoryNavi from "./CategoryNavi";
+import Category from "./category/Category";
+import CategoryNavi from "./category/CategoryNavi";
 
 function SideMenu() {
   return (
-    <div class="col-md-3 sol-sm-0 mt-4 ">
+    <div className="col-md-3 sol-sm-0 mt-4 ">
       <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
+        className="offcanvas offcanvas-end"
+        tabIndex="-1"
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
       >
-        <div class="offcanvas-header">
+        <div className="offcanvas-header">
           <button
             type="button"
-            class="btn-close"
+            className="btn-close"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body container">
+        <div className="offcanvas-body container">
           <Profile />
           <CategoryNavi />
         </div>
       </div>
 
-      <div class="container d-none d-lg-block ">
+      <div className="container d-none d-lg-block ">
         <Profile />
         <Category />
       </div>
