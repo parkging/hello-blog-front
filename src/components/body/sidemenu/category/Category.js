@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink as Link } from "react-router-dom";
 import styles from "./Category.module.css";
 
 function Category() {
@@ -51,36 +52,43 @@ function Category() {
         </div>
       ) : (
         <div>
-          <strong
-            className="d-none d-md-block h7 my-2 mt-4"
-            style={{ cursor: "pointer" }}
-            // onClick="|location.href='@{/}'|"
-          >
-            분류
-            <span className="badge rounded-pill text-bg-secondary ms-1">
-              {categories.reduce(
-                (sum, category) => sum + category.postCount,
-                0
-              )}
-            </span>
-          </strong>
+          <Link className={styles.noTextDecoration} to={"/"}>
+            <strong
+              className="d-none d-md-block h7 my-2 mt-4"
+              style={{ cursor: "pointer" }}
+              // onClick="|location.href='@{/}'|"
+            >
+              분류
+              <span className="badge rounded-pill text-bg-secondary ms-1">
+                {categories.reduce(
+                  (sum, category) => sum + category.postCount,
+                  0
+                )}
+              </span>
+            </strong>
+          </Link>
           <hr className="d-none d-md-block my-2" />
           {categories.map((category) => {
             return (
               <ul key={category.id} className="list-group list-group-flush">
                 <div>
-                  <li
-                    className={`list-group-item ${styles.hover}`}
-                    style={{ cursor: "pointer" }}
+                  <Link
+                    className={styles.noTextDecoration}
+                    to={`../../${category.name}`}
                   >
-                    {category.parent ? (
-                      <span className="">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    ) : null}
-                    <span className="">{category.name}</span>
-                    <span className="badge rounded-pill text-bg-secondary ms-1">
-                      {category.postCount}
-                    </span>
-                  </li>
+                    <li
+                      className={`list-group-item ${styles.hover}`}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {category.parent ? (
+                        <span className="">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      ) : null}
+                      <span className="">{category.name}</span>
+                      <span className="badge rounded-pill text-bg-secondary ms-1">
+                        {category.postCount}
+                      </span>
+                    </li>
+                  </Link>
                 </div>
               </ul>
             );

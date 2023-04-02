@@ -1,12 +1,14 @@
 function Posts({ posts, loading, error }) {
   return (
-    <div className="list-group" style={{ minHeight: "760px" }}>
+    <div className="row ">
       {loading ? null : (
-        <div>
+        <div className="list-group" style={{ minHeight: "760px" }}>
           {posts.length > 0 ? null : (
-            <p className="mx-auto my-auto">
-              {error ? error : "게시글이 존재하지 않습니다."}
-            </p>
+            <div className="d-flex justify-content-center align-content-center">
+              <p className="mx-auto my-auto">
+                {error ? error : "게시글이 존재하지 않습니다."}
+              </p>
+            </div>
           )}
 
           {posts.map((post) => {

@@ -1,4 +1,4 @@
-import Profile from "./Profile";
+import Profile from "./profile/Profile";
 import Category from "./category/Category";
 import CategoryNavi from "./category/CategoryNavi";
 

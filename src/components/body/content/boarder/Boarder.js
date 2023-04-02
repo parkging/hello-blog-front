@@ -1,9 +1,11 @@
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Posts from "./Posts";
 import Pagenation from "./Pagenation";
 import BoarderHeader from "./BoarderHeader";
 
 function Boarder() {
+  const { postCategoryName } = useParams();
   const [posts, setPosts] = useState([]);
   const [postCount, setPostCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -42,13 +44,14 @@ function Boarder() {
       fetchCurrentPage = fetchCurrentPage;
     }
   };
-
+  console.log("postCategoryName=" + postCategoryName);
   const currentPosts = (posts) => posts.slice(postOfFirst, postOfLast);
 
   const getPosts = () => {
-    fetch(
-      `http://localhost:8080/posts?page=${fetchCurrentPage}&size=${fetchMaxSize}`
-    )
+    let fetchUrl = `http://localhost:8080/posts?page=${fetchCurrentPage}&size=${fetchMaxSize}`;
+    if (!!postCategoryName) fetchUrl += `&postCategoryName=${postCategoryName}`;
+    console.log(fetchUrl);
+    fetch(fetchUrl)
       .then((response) => {
         if (!response.ok) throw Error("데이터 조회에 실패하였습니다.");
         setPostCount(response.headers.get("x-total-count"));
@@ -73,6 +76,12 @@ function Boarder() {
     getPosts();
   }, [fetchCurrentPage]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+    setLoading(true);
+    getPosts();
+  }, [postCategoryName]);
+
   // console.log(
   //   "currentPage=" +
   //     currentPage +
@@ -92,7 +101,7 @@ function Boarder() {
 
   return (
     <div>
-      <BoarderHeader postCount={postCount} />
+      <BoarderHeader boarderName={postCategoryName} postCount={postCount} />
       <div id="frag_boarder" className="">
         <div className="row">
           {loading ? (

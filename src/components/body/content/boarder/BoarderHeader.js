@@ -1,8 +1,11 @@
-function BoarderHeader({ postCount }) {
+function BoarderHeader({ boarderName, postCount }) {
   return (
     <div className="row">
       <h4 className="mt-4 col">
-        <span text="${boardForm?.name}">전체 글</span>
+        <span text="${boardForm?.name}">
+          {" "}
+          {boarderName ? boarderName : "전체 글"}
+        </span>
         <span className="badge rounded-pill text-bg-secondary ms-1">
           {postCount}
         </span>
