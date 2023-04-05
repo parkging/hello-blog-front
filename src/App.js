@@ -4,6 +4,7 @@ import {
   Sitch,
   Route,
   Switch,
+  Redirect,
 } from "react-router-dom";
 import Home from "./routes/Home";
 
@@ -13,7 +14,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/movie/:id">{/* <Detail /> */}</Route>
-        <Route path="/">
+        <Route path="/*">
           <Home />
         </Route>
       </Switch>

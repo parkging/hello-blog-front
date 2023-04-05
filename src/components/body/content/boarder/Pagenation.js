@@ -1,11 +1,14 @@
+import { Link as Link } from "react-router-dom";
+import styles from "./Boarder.modules.css";
 function Pagenation({
+  category,
   pageOfFirst,
   pageOfLast,
   currentPage,
   postForPageSize,
   pageViewCount,
   postCount,
-  paginate,
+  // paginate,
 }) {
   const pageNumbers = [];
   for (let i = pageOfFirst; i <= pageOfLast; i++) {
@@ -20,39 +23,41 @@ function Pagenation({
         aria-label="Second group"
       >
         {pageOfFirst > pageViewCount ? (
-          <button
-            type="button"
-            className="btn btn-outline-secondary"
-            onClick={() => paginate(pageOfFirst - 1)}
+          <Link
+            style={{ width: "40px" }}
+            className={"btn btn-outline-secondary"}
+            to={`/boarder/${category}/${pageOfFirst - 1}`}
+            // onClick={() => paginate(pageOfFirst - 1)}
           >
             {"<"}
-          </button>
+          </Link>
         ) : null}
         {pageNumbers.map((pageNum) => {
           return (
-            <button
+            <Link
               key={pageNum}
-              type="button"
               style={{ width: "40px" }}
               className={
                 pageNum == currentPage
                   ? "btn btn-secondary"
                   : "btn btn-outline-secondary"
               }
-              onClick={() => paginate(pageNum)}
+              to={`/boarder/${category}/${pageNum}`}
+              // onClick={() => paginate(pageNum)}
             >
               {pageNum}
-            </button>
+            </Link>
           );
         })}
         {pageOfLast < Math.ceil(postCount / postForPageSize) ? (
-          <button
-            type="button"
-            className="btn btn-outline-secondary"
-            onClick={() => paginate(pageOfLast + 1)}
+          <Link
+            style={{ width: "40px" }}
+            className={"btn btn-outline-secondary"}
+            to={`/boarder/${category}/${pageOfLast + 1}`}
+            // onClick={() => paginate(pageOfLast + 1)}
           >
             {">"}
-          </button>
+          </Link>
         ) : null}
       </div>
     </div>

@@ -52,7 +52,7 @@ function Category() {
         </div>
       ) : (
         <div>
-          <Link className={styles.noTextDecoration} to={"/"}>
+          <Link className={styles.noTextDecoration} to={"/boarder"}>
             <strong
               className="d-none d-md-block h7 my-2 mt-4"
               style={{ cursor: "pointer" }}
@@ -74,7 +74,7 @@ function Category() {
                 <div>
                   <Link
                     className={styles.noTextDecoration}
-                    to={`../../${category.name}`}
+                    to={`/boarder/${category.name}/1`}
                   >
                     <li
                       className={`list-group-item ${styles.hover}`}

@@ -1,24 +1,25 @@
-function Posts({ posts, loading, error }) {
+import { NavLink as Link } from "react-router-dom";
+import styles from "./Boarder.modules.css";
+function Posts({ posts, loading, error, postCount }) {
   return (
     <div className="row ">
       {loading ? null : (
         <div className="list-group" style={{ minHeight: "760px" }}>
           {posts.length > 0 ? null : (
-            <div className="d-flex justify-content-center align-content-center">
-              <p className="mx-auto my-auto">
+            <div className="d-flex justify-content-center align-content-center h-100">
+              <h3 className="mx-auto my-auto">
                 {error ? error : "게시글이 존재하지 않습니다."}
-              </p>
+              </h3>
             </div>
           )}
 
           {posts.map((post) => {
             return (
-              <a
+              <Link
                 key={post.id}
-                href="@{/post/{postId} (postId=${postForm?.postId})}"
-                className="list-group-item list-group-item-action"
+                className={`list-group-item list-group-item-action ${styles.noTextDecoration}`}
                 aria-current="true"
-                style={{ minHeight: "0px" }}
+                to={`/post/${post.id}`}
               >
                 <div className="row">
                   <div className={post.thumbnailImageUrl ? "col-9" : "col-12"}>
@@ -48,7 +49,7 @@ function Posts({ posts, loading, error }) {
                     </div>
                   ) : null}
                 </div>
-              </a>
+              </Link>
             );
           })}
         </div>
