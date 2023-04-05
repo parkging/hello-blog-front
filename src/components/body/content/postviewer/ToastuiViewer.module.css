@@ -1,8 +1,13 @@
 .postViewer > div > div {
+  min-height: 600px;
   font-size: 18px !important;
 }
 .postEditor > div > div {
+  min-height: 600px;
   font-size: 18px !important;
+}
+.postEditor > div > div > div > div > div > div > div > div {
+  font-size: 17px !important;
 }
 
 .ProseMirror {

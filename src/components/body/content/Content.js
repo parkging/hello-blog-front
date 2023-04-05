@@ -5,7 +5,12 @@ import PostEditor from "./posteditor/PostEditor";
 function Content() {
   return (
     <Switch>
-      <Route path="/post-edit">
+      <Route path="/post/:postId/edit">
+        <div className="col-lg-9 col-md-12">
+          <PostEditor />
+        </div>
+      </Route>
+      <Route path="/post/add">
         <div className="col-lg-9 col-md-12">
           <PostEditor />
         </div>
@@ -20,16 +25,11 @@ function Content() {
           <Boarder />
         </div>
       </Route>
-      {/* <Route path="/boarder/:category">
+      {/* <Route path="/boarder/전체/1">
         <div className="col-lg-9 col-md-12">
           <Boarder />
         </div>
       </Route> */}
-      <Route path="/boarder/전체/1">
-        <div className="col-lg-9 col-md-12">
-          <Boarder />
-        </div>
-      </Route>
       <Route path="/">
         <Redirect to="/boarder/전체/1"></Redirect>
       </Route>

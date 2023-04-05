@@ -9,6 +9,7 @@ function PostViewer() {
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const getPost = () => {
     fetch(`http://localhost:8080/posts/${postId}`)
       .then((response) => {
@@ -28,11 +29,6 @@ function PostViewer() {
 
   useEffect(() => {
     getPost();
-    console.dir(post);
-    console.log("error=" + error);
-    localStorage.setItem("beforeLocation", localStorage.getItem("location"));
-    localStorage.setItem("location", window.location.href);
-    console.log(window.location.href);
     return () => {};
   }, []);
 

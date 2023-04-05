@@ -1,4 +1,7 @@
+import { Link as Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 function PostViewerHeader({ post }) {
+  const { postId } = useParams();
   return (
     <div className="row">
       <div className="row w-100 mt-4 d-flex">
@@ -12,13 +15,14 @@ function PostViewerHeader({ post }) {
           className="col d-flex justify-content-end"
           if="${session.loginMember}"
         >
-          <button
+          <Link
             type="button"
             className="btn btn-secondary"
+            to={`/post/${postId}/edit`}
             // onClick="|location.href='@{{postId}/edit(postId=${postForm.postId})}'|"
           >
             수정하기
-          </button>
+          </Link>
         </div>
       </div>
 

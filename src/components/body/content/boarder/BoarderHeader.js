@@ -1,3 +1,4 @@
+import { Link as Link } from "react-router-dom";
 function BoarderHeader({ boarderName, postCount }) {
   return (
     <div className="row">
@@ -11,12 +12,13 @@ function BoarderHeader({ boarderName, postCount }) {
         </span>
       </h4>
       <div className="col d-flex justify-content-end">
-        <button
+        <Link
           className="btn btn-secondary my-auto me-5"
           // onClick="|location.href='@{/post/0/add}'|"
+          to={`/post/add`}
         >
           글쓰기
-        </button>
+        </Link>
       </div>
     </div>
   );
