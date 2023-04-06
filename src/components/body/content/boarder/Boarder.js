@@ -76,12 +76,6 @@ function Boarder() {
   useEffect(() => {
     setCurrentPage(page);
     setPostCategoryName(category);
-    console.log(
-      "카테고리변경 currentPage=" +
-        currentPage +
-        ", postCategoryName=" +
-        postCategoryName
-    );
   }, [category, page]);
 
   return (

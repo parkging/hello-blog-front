@@ -8,7 +8,6 @@ import { useRef } from "react";
 
 function ToastuiEditor({ content, setPost }) {
   const editorRef = useRef();
-  console.log("content=" + content);
   const editorChange = () => {
     setPost((current) => {
       return {

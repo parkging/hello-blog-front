@@ -20,7 +20,6 @@ function PostEditor() {
    * PATCH / PUT 으로 Post 저장
    **/
   const savePost = () => {
-    console.log("method=" + method);
     const url =
       "http://localhost:8080/posts" + (method === "PATCH" ? `/${postId}` : "");
     fetch(url, {
@@ -50,7 +49,6 @@ function PostEditor() {
           throw Error(error.message);
         } else {
           const postId = json;
-          console.log(postId);
           history.push(`/post/${postId}`);
         }
       })
@@ -104,7 +102,7 @@ function PostEditor() {
   }, []);
 
   useEffect(() => {
-    console.log(post);
+    // console.log(post);
   }, [post]);
 
   return (
