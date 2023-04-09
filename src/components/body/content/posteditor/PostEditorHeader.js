@@ -1,19 +1,30 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 function PostEditorHeader({ post, setPost }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  //에러 메시지
+  const [error, setError] = useState(null);
 
   const handleSelect = (e) => {
     post.postCategoryId = e.target.value;
   };
 
-  const getCategories = async () => {
-    const json = await (
-      await fetch("http://localhost:8080/postcategories")
-    ).json();
-    setCategories(json);
-    setLoading(false);
+  const getCategories = () => {
+    axios
+      .get("/postcategories")
+      .then((response) => {
+        setCategories(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        error.response.data?.errorCode
+          ? setError(error.response.data?.message)
+          : setError(error.message);
+        setLoading(false);
+        console.log("at PostEditorHeader.js fetch data fail " + error);
+      });
   };
 
   useEffect(() => {

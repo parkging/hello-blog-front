@@ -1,5 +1,6 @@
 import { Link as Link } from "react-router-dom";
 import styles from "./Boarder.modules.css";
+import { useEffect } from "react";
 function Pagenation({
   category,
   pageOfFirst,
@@ -11,9 +12,29 @@ function Pagenation({
   // paginate,
 }) {
   const pageNumbers = [];
+
   for (let i = pageOfFirst; i <= pageOfLast; i++) {
     pageNumbers.push(i);
   }
+
+  useEffect(() => {
+    // console.log(
+    //   "category=" +
+    //     category +
+    //     ", pageOfFirst=" +
+    //     pageOfFirst +
+    //     ", pageOfLast=" +
+    //     pageOfLast +
+    //     ", currentPage=" +
+    //     currentPage +
+    //     ", postForPageSize=" +
+    //     postForPageSize +
+    //     ", pageViewCount=" +
+    //     pageViewCount +
+    //     ", postCount=" +
+    //     postCount
+    // );
+  }, []);
 
   return (
     <div className="d-flex justify-content-center mt-4">

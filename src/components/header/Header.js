@@ -1,3 +1,4 @@
+import { Link as Link } from "react-router-dom";
 function Header() {
   return (
     <div>
@@ -10,9 +11,9 @@ function Header() {
           </div>
 
           <div className="col-3">
-            <a className="" href="/logout">
-              로그아웃
-            </a>
+            <Link className="" to={`/login`}>
+              로그인
+            </Link>
           </div>
 
           <div className="col-1 d-lg-none navbar-dark me-4">

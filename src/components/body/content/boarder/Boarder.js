@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Posts from "./Posts";
 import Pagenation from "./Pagenation";
 import BoarderHeader from "./BoarderHeader";
+import axios from "axios";
 
 function Boarder() {
   const { category, page } = useParams();
@@ -43,26 +44,30 @@ function Boarder() {
         : (postCount - 1) / pageViewCount + 1;
   };
 
-  const getPosts = () => {
-    let fetchUrl = `http://localhost:8080/posts?page=${
-      currentPage - 1
-    }&size=${fetchMaxSize}`;
-    if (!!postCategoryName && postCategoryName !== "전체")
-      fetchUrl += `&postCategoryName=${postCategoryName}`;
+  const getUrl = () => {
+    let url = `/posts?page=${currentPage - 1}&size=${fetchMaxSize}`;
+    if (!!postCategoryName && postCategoryName !== "전체") {
+      url += `&postCategoryName=${postCategoryName}`;
+    }
 
-    fetch(fetchUrl)
+    return url;
+  };
+
+  const getPosts = () => {
+    let url = getUrl();
+
+    axios
+      .get(url)
       .then((response) => {
-        if (!response.ok) throw Error("데이터 조회에 실패하였습니다.");
         setPostCount(response.headers.get("x-total-count"));
-        return response.json();
-      })
-      .then((json) => {
-        setPosts(json);
+        setPosts(response.data);
         setError(null);
         setLoading(false);
       })
-      .catch((err) => {
-        setError(err.message);
+      .catch((error) => {
+        error.response.data?.errorCode
+          ? setError(error.response.data?.message)
+          : setError(error.message);
         setLoading(false);
         console.log("at Boarder.js fetch data fail " + error);
       });

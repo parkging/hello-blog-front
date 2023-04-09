@@ -1,20 +1,33 @@
 import { useState, useEffect } from "react";
 import { NavLink as Link } from "react-router-dom";
 import styles from "./Category.module.css";
+import axios from "axios";
 
 function Category() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const getCategories = async () => {
-    const json = await (
-      await fetch("http://localhost:8080/postcategories")
-    ).json();
-    setCategories(json);
-    setLoading(false);
+  const [error, setError] = useState(null);
+
+  const getCategories = () => {
+    axios
+      .get("/postcategories")
+      .then((response) => {
+        setCategories(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        error.response.data?.errorCode
+          ? setError(error.response.data?.message)
+          : setError(error.message);
+        setLoading(false);
+        console.log("at PostEditor.js fetch data fail " + error);
+      });
   };
+
   useEffect(() => {
     getCategories();
   }, []);
+
   return (
     <div className="mt-1 row">
       {loading ? (

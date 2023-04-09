@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login">
-          <Redirect to="http://naver.com"></Redirect>
+          <Login></Login>
         </Route>
         <Route path="/*">
           <Home />

@@ -3,6 +3,7 @@ import ToastuiViewer from "./ToastuiViewer";
 import PostViewerHeader from "./PostViewerHeader";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import axios from "axios";
 
 function PostViewer() {
   const { postId } = useParams();
@@ -10,20 +11,22 @@ function PostViewer() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  /**
+   * GET으로 Post 조회
+   **/
   const getPost = () => {
-    fetch(`http://localhost:8080/posts/${postId}`)
+    axios
+      .get(`/posts/${postId}`)
       .then((response) => {
-        const json = response.json();
-        if (!response.ok) {
-          console.error("데이터 조회에 실패하였습니다.");
-          return json;
-        }
-        return json;
-      })
-      .then((json) => {
         setLoading(false);
-        setPost(json);
-        json.errorCode ? setError(json.message) : setError(null);
+        setPost(response.data);
+      })
+      .catch((error) => {
+        error.response.data?.errorCode
+          ? setError(error.response.data?.message)
+          : setError(error.message);
+        setLoading(false);
+        console.log("at PostEditor.js fetch data fail " + error);
       });
   };
 
