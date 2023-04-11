@@ -1,45 +1,26 @@
-import { useEffect, useState } from "react";
-import Movie from "../components/Movie";
+import styles from "./Home.module.css";
+import Header from "../components/header/Header";
+import Body from "../components/body/Body";
+import Footer from "../components/footer/Footer";
 
-function Home() {
-  const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-  const getMovies = async () => {
-    const response = await fetch(
-      "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.1&sort_by=year"
-    );
-    const json = await response.json();
-    setMovies(json.data.movies);
-    setLoading(false);
-  };
-  useEffect(() => {
-    getMovies();
-  }, []);
+function Home({ jwt, setJwt }) {
   return (
     <div>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div>
-          <h1>Movies</h1>
-          <ul>
-            {movies.map((movie) => {
-              // console.log(movie);
-              return (
-                <Movie
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  summary={movie.summary}
-                  coverImage={movie.medium_cover_image}
-                />
-              );
-            })}
-          </ul>
+      <div className={styles.home}>
+        <div className={styles.header}>
+          <Header jwt={jwt} setJwt={setJwt} />
         </div>
-      )}
+        <div className={styles.body}>
+          <Body jwt={jwt} setJwt={setJwt} />
+        </div>
+        <div className={styles.footer}>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }
+
+<style></style>;
 
 export default Home;
