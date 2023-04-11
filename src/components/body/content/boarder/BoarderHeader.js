@@ -1,5 +1,8 @@
 import { Link as Link } from "react-router-dom";
-function BoarderHeader({ boarderName, postCount }) {
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+function BoarderHeader({ boarderName, postCount, jwt }) {
   return (
     <div className="row">
       <h4 className="mt-4 col">
@@ -11,15 +14,20 @@ function BoarderHeader({ boarderName, postCount }) {
           {postCount}
         </span>
       </h4>
-      <div className="col d-flex justify-content-end">
-        <Link
-          className="btn btn-secondary my-auto me-5"
-          // onClick="|location.href='@{/post/0/add}'|"
-          to={`/post/add`}
-        >
-          글쓰기
-        </Link>
-      </div>
+
+      {jwt ? (
+        <div className="col d-flex justify-content-end">
+          <Link
+            className="btn btn-secondary my-auto me-5"
+            // onClick="|location.href='@{/post/0/add}'|"
+            to={`/post/add`}
+          >
+            글쓰기
+          </Link>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -3,15 +3,15 @@ import Header from "../components/header/Header";
 import Body from "../components/body/Body";
 import Footer from "../components/footer/Footer";
 
-function Home() {
+function Home({ jwt, setJwt }) {
   return (
     <div>
       <div className={styles.home}>
         <div className={styles.header}>
-          <Header />
+          <Header jwt={jwt} setJwt={setJwt} />
         </div>
         <div className={styles.body}>
-          <Body />
+          <Body jwt={jwt} setJwt={setJwt} />
         </div>
         <div className={styles.footer}>
           <Footer />

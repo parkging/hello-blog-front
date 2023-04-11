@@ -5,7 +5,7 @@ import Pagenation from "./Pagenation";
 import BoarderHeader from "./BoarderHeader";
 import axios from "axios";
 
-function Boarder() {
+function Boarder({ jwt }) {
   const { category, page } = useParams();
   const [posts, setPosts] = useState([]);
   const [postCount, setPostCount] = useState(0);
@@ -88,6 +88,7 @@ function Boarder() {
       <BoarderHeader
         boarderName={postCategoryName ? postCategoryName : "전체 글"}
         postCount={postCount}
+        jwt={jwt}
       />
       <div id="frag_boarder" className="">
         <div className="row">

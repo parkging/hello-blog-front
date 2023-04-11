@@ -1,6 +1,8 @@
 import { Link as Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
-function PostViewerHeader({ post }) {
+function PostViewerHeader({ post, jwt }) {
   const { postId } = useParams();
   return (
     <div className="row">
@@ -15,14 +17,17 @@ function PostViewerHeader({ post }) {
           className="col d-flex justify-content-end"
           if="${session.loginMember}"
         >
-          <Link
-            type="button"
-            className="btn btn-secondary"
-            to={`/post/${postId}/edit`}
-            // onClick="|location.href='@{{postId}/edit(postId=${postForm.postId})}'|"
-          >
-            수정하기
-          </Link>
+          {jwt ? (
+            <Link
+              type="button"
+              className="btn btn-secondary"
+              to={`/post/${postId}/edit`}
+            >
+              수정하기
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
       </div>
 

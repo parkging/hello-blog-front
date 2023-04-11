@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 
-function PostViewer() {
+function PostViewer({ jwt }) {
   const { postId } = useParams();
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(true);
@@ -45,7 +45,7 @@ function PostViewer() {
             <h3 className="my-auto "> {error} </h3>
           ) : (
             <div className="container">
-              <PostViewerHeader post={post}></PostViewerHeader>
+              <PostViewerHeader post={post} jwt={jwt}></PostViewerHeader>
               <ToastuiViewer content={post?.content}></ToastuiViewer>
             </div>
           )}
