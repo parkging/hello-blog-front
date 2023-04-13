@@ -2,11 +2,7 @@ import { Link as Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-function Header({ jwt, setJwt }) {
-  const onLogout = () => {
-    setJwt(null);
-  };
-
+function Header({ jwt, onLogout }) {
   return (
     <div>
       <nav className="navbar bg-dark" data-bs-theme="dark">

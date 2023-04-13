@@ -1,7 +1,7 @@
 import { Link as Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-function Login({ setJwt }) {
+function Login({ setJwt, onLoginSuccess }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,17 +29,11 @@ function Login({ setJwt }) {
       email,
       password,
     };
+
     axios
       .post("/login", data)
       .then((response) => {
-        const accessToken = response.headers.get("authorization");
-
-        // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken}`;
-
-        setJwt(axios.defaults.headers.common.Authorization);
+        onLoginSuccess(response);
 
         setEmailError(null);
         setPasswordError(null);
