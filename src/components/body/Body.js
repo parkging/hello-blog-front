@@ -1,10 +1,10 @@
 import SideMenu from "./sidemenu/SideMenu";
 import Content from "./content/Content";
-function Body({ jwt }) {
+function Body({ jwt, member }) {
   return (
     <div className="container">
       <div className="row">
-        <Content jwt={jwt} />
+        <Content jwt={jwt} member={member} />
         <SideMenu />
       </div>
     </div>

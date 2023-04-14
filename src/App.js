@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
+import Signup from "./routes/Signup";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 function App() {
   const [jwt, setJwt] = useState(null);
+  const [member, setMember] = useState(null);
   const [isRefreshTokenExist, setIsRefreshTokenExist] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["refreshExpireTime"]);
 
@@ -22,6 +24,11 @@ function App() {
 
     const base64Payload = accessToken.split(".")[1]; //value 0 -> header, 1 -> payload, 2 -> VERIFY SIGNATURE
     const payload = JSON.parse(atob(base64Payload));
+
+    setMember((prev) => {
+      return { ...prev, id: payload.id, email: payload.email };
+    });
+
     // accessToken 만료 30초 전 로그인 연장 처리
     setTimeout(onSilentRefresh, payload.expire_millisecond - 10000);
   };
@@ -68,8 +75,11 @@ function App() {
         <Route path="/login">
           <Login setJwt={setJwt} onLoginSuccess={onLoginSuccess}></Login>
         </Route>
+        <Route path="/signup">
+          <Signup></Signup>
+        </Route>
         <Route path="/*">
-          <Home jwt={jwt} onLogout={onLogout} />
+          <Home jwt={jwt} onLogout={onLogout} member={member} />
         </Route>
       </Switch>
     </Router>

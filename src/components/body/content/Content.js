@@ -2,17 +2,17 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Boarder from "./boarder/Boarder";
 import PostViewer from "./postviewer/PostViewer";
 import PostEditor from "./posteditor/PostEditor";
-function Content({ jwt }) {
+function Content({ jwt, member }) {
   return (
     <Switch>
       <Route path="/post/:postId/edit">
         <div className="col-lg-9 col-md-12">
-          {jwt ? <PostEditor /> : <Redirect to="/login" />}
+          {jwt ? <PostEditor member={member} /> : <Redirect to="/login" />}
         </div>
       </Route>
       <Route path="/post/add">
         <div className="col-lg-9 col-md-12">
-          {jwt ? <PostEditor /> : <Redirect to="/login" />}
+          {jwt ? <PostEditor member={member} /> : <Redirect to="/login" />}
         </div>
       </Route>
       <Route path="/post/:postId">

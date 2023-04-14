@@ -6,7 +6,7 @@ import ToastuiEditor from "./ToastuiEditor";
 import PostEditorHeader from "./PostEditorHeader";
 import PostEditorFooter from "./PostEditorFooter";
 
-function PostEditor() {
+function PostEditor({ member }) {
   const history = useHistory();
   const location = useLocation();
   const { postId } = useParams();
@@ -72,7 +72,7 @@ function PostEditor() {
       setPost((prev) => {
         return {
           ...prev,
-          // memberId: "1",
+          memberId: member.id,
           title: "",
           content: "",
           thumbnailImageUrl: "",

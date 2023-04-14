@@ -63,8 +63,6 @@ function Login({ setJwt, onLoginSuccess }) {
         height: "100%",
         display: "flex",
         alignItems: "center",
-        //   padding-top: 40px,
-        //   padding-bottom: 40px,
         backgroundColor: "#f5f5f5",
       }}
     >
@@ -123,22 +121,19 @@ function Login({ setJwt, onLoginSuccess }) {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <button
-                className="w-100 btn btn-lg btn-primary"
-                type="submit"
-                // onClick={onLogin}
-              >
-                Sign Up
+              <button className="w-100 btn btn-lg btn-primary" type="submit">
+                Sign In
               </button>
             </div>
             <div className="col-md-6">
-              <button
+              <Link
                 className="w-100 btn btn-lg btn-secondary"
-                type="button"
+                to={`/signup`}
+                // type="button"
                 // onClick={""}
               >
-                Sign In
-              </button>
+                Sign Up
+              </Link>
             </div>
           </div>
           <p className="mt-5 mb-3 text-muted d-flex justify-content-center">

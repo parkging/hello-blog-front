@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import Body from "../components/body/Body";
 import Footer from "../components/footer/Footer";
 
-function Home({ jwt, onLogout }) {
+function Home({ jwt, onLogout, member }) {
   return (
     <div>
       <div className={styles.home}>
@@ -11,7 +11,7 @@ function Home({ jwt, onLogout }) {
           <Header jwt={jwt} onLogout={onLogout} />
         </div>
         <div className={styles.body}>
-          <Body jwt={jwt} />
+          <Body jwt={jwt} member={member} />
         </div>
         <div className={styles.footer}>
           <Footer />
