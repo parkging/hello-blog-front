@@ -144,6 +144,20 @@ function Login({ setJwt, onLoginSuccess }) {
             >
               구글 로그인
             </a>
+            <a
+              className="google g_id_signin"
+              // className="w-25 btn btn-lg btn-secondary mx-auto"
+              href="http://localhost:8080/oauth2/authorization/naver"
+            >
+              네이버 로그인
+            </a>
+            <a
+              className="google g_id_signin"
+              // className="w-25 btn btn-lg btn-secondary mx-auto"
+              href="http://localhost:8080/oauth2/authorization/kakao"
+            >
+              카카오 로그인
+            </a>
           </div>
           <p className="mt-5 mb-3 text-muted d-flex justify-content-center">
             &copy; 2023
