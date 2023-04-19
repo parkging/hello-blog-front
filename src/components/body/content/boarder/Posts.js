@@ -2,7 +2,7 @@ import { NavLink as Link } from "react-router-dom";
 import styles from "./Boarder.modules.css";
 function Posts({ posts, loading, error, postCount }) {
   return (
-    <div className="row ">
+    <div className="row mx-auto">
       {loading ? null : (
         <div className="list-group" style={{ minHeight: "760px" }}>
           {posts.length > 0 ? null : (

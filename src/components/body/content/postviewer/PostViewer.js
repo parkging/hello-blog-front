@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ToastuiViewer from "./ToastuiViewer";
 import PostViewerHeader from "./PostViewerHeader";
+import Comment from "../comment/Comment";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
@@ -47,6 +48,7 @@ function PostViewer({ jwt }) {
             <div className="container">
               <PostViewerHeader post={post} jwt={jwt}></PostViewerHeader>
               <ToastuiViewer content={post?.content}></ToastuiViewer>
+              <Comment post={post}></Comment>
             </div>
           )}
         </div>

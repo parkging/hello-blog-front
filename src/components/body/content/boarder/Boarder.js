@@ -91,7 +91,7 @@ function Boarder({ jwt }) {
         jwt={jwt}
       />
       <div id="frag_boarder" className="">
-        <div className="row">
+        <div className="row mx-auto">
           {loading ? (
             <div className="list-group" style={{ minHeight: "760px" }}>
               <p className="mx-auto my-auto">{error ? error : ""}</p>
