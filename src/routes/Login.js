@@ -146,21 +146,21 @@ function Login({ setJwt, onLoginSuccess }) {
             <a
               className="google g_id_signin"
               // className="w-25 btn btn-lg btn-secondary mx-auto"
-              href="http://localhost:8080/oauth2/authorization/google"
+              href={`${axios.defaults.baseURL}/oauth2/authorization/google`}
             >
               구글 로그인
             </a>
             <a
               className="google g_id_signin"
               // className="w-25 btn btn-lg btn-secondary mx-auto"
-              href="http://localhost:8080/oauth2/authorization/naver"
+              href={`${axios.defaults.baseURL}/oauth2/authorization/naver`}
             >
               네이버 로그인
             </a>
             <a
               className="google g_id_signin"
               // className="w-25 btn btn-lg btn-secondary mx-auto"
-              href="http://localhost:8080/oauth2/authorization/kakao"
+              href={`${axios.defaults.baseURL}/oauth2/authorization/kakao`}
             >
               카카오 로그인
             </a>

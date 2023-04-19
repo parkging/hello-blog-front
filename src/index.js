@@ -4,6 +4,7 @@ import App from "./App";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://1nsad.iptime.org:8080";
+axios.defaults.discusRUL = "http://1nsad.iptime.org";
 axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
