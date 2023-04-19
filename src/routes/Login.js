@@ -13,7 +13,7 @@ function Login({ setJwt, onLoginSuccess }) {
   const [passwordError, setPasswordError] = useState(null);
 
   // console.log(window.location.href + useLocation().search);
-  console.log(`${redirecturl ? redirecturl : "/"}`);
+  console.log(axios.defaults.baseURL);
 
   const validateCheck = () => {
     if (email.length < 5) {
@@ -81,6 +81,7 @@ function Login({ setJwt, onLoginSuccess }) {
             Please sign in
           </h1>
 
+          {/* 
           <div className="form-floating">
             <input
               type="email"
@@ -141,16 +142,21 @@ function Login({ setJwt, onLoginSuccess }) {
                 Sign Up
               </Link>
             </div>
-          </div>
+          </div> 
+          */}
+
           <div className="row mt-1">
             <a
-              className="google g_id_signin"
+              className="d-flex justify-content-center"
               // className="w-25 btn btn-lg btn-secondary mx-auto"
               href={`${axios.defaults.baseURL}/oauth2/authorization/google`}
             >
-              구글 로그인
+              <img
+                className="w-75"
+                src="https://developers.google.com/static/identity/images/btn_google_signin_light_normal_web.png?hl=ko"
+              ></img>
             </a>
-            <a
+            {/* <a
               className="google g_id_signin"
               // className="w-25 btn btn-lg btn-secondary mx-auto"
               href={`${axios.defaults.baseURL}/oauth2/authorization/naver`}
@@ -163,7 +169,7 @@ function Login({ setJwt, onLoginSuccess }) {
               href={`${axios.defaults.baseURL}/oauth2/authorization/kakao`}
             >
               카카오 로그인
-            </a>
+            </a> */}
           </div>
           <p className="mt-5 mb-3 text-muted d-flex justify-content-center">
             &copy; 2023
