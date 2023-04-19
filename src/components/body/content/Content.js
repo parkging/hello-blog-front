@@ -7,12 +7,20 @@ function Content({ jwt, member }) {
     <Switch>
       <Route path="/post/:postId/edit">
         <div className="col-lg-9 col-md-12">
-          {jwt ? <PostEditor member={member} /> : <Redirect to="/login" />}
+          {jwt ? (
+            <PostEditor member={member} />
+          ) : (
+            <Redirect to={`/login?redirecturl=${window.location.pathname}`} />
+          )}
         </div>
       </Route>
       <Route path="/post/add">
         <div className="col-lg-9 col-md-12">
-          {jwt ? <PostEditor member={member} /> : <Redirect to="/login" />}
+          {jwt ? (
+            <PostEditor member={member} />
+          ) : (
+            <Redirect to={`/login?redirecturl=${window.location.pathname}`} />
+          )}
         </div>
       </Route>
       <Route path="/post/:postId">

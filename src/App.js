@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useCookies } from "react-cookie";
+import CategoryEdit from "./routes/CategoryEdit";
+import CategoryAdd from "./routes/CategoryAdd";
 
 function App() {
   const [jwt, setJwt] = useState(null);
@@ -17,7 +19,7 @@ function App() {
     const accessToken = response.headers.get("authorization");
 
     // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-    axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    axios.defaults.headers.common["Authorization"] = `${accessToken}`;
 
     setJwt(axios.defaults.headers.common.Authorization);
     setIsRefreshTokenExist(true);
@@ -29,7 +31,7 @@ function App() {
       return { ...prev, id: payload.id, email: payload.email };
     });
 
-    // accessToken 만료 30초 전 로그인 연장 처리
+    // accessToken 만료 10초 전 로그인 연장 처리
     setTimeout(onSilentRefresh, payload.expire_millisecond - 10000);
   };
 
@@ -77,6 +79,12 @@ function App() {
         </Route>
         <Route path="/signup">
           <Signup></Signup>
+        </Route>
+        <Route path="/categoryedit">
+          <CategoryEdit></CategoryEdit>
+        </Route>
+        <Route path="/categoryeadd">
+          <CategoryAdd></CategoryAdd>
         </Route>
         <Route path="/*">
           <Home jwt={jwt} onLogout={onLogout} member={member} />

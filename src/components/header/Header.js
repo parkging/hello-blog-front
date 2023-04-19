@@ -24,7 +24,7 @@ function Header({ jwt, onLogout }) {
             ) : (
               <Link
                 className="badge rounded-pill text-bg-secondary"
-                to={`/login`}
+                to={`/login?redirecturl=${window.location.pathname}`}
               >
                 로그인
               </Link>

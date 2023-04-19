@@ -62,7 +62,7 @@ function Signup() {
         setPasswordConfirmError(null);
         setSignupError(null);
 
-        history.push(`/login`);
+        history.goBack();
       })
       .catch((error) => {
         error.response.data?.errorCode

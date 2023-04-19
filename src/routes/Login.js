@@ -1,13 +1,19 @@
-import { Link as Link, useHistory } from "react-router-dom";
+import { Link as Link, useHistory, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 function Login({ setJwt, onLoginSuccess }) {
   const history = useHistory();
+  const redirecturl = new URLSearchParams(useLocation().search).get(
+    "redirecturl"
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(null);
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
+
+  // console.log(window.location.href + useLocation().search);
+  console.log(`${redirecturl ? redirecturl : "/"}`);
 
   const validateCheck = () => {
     if (email.length < 5) {
@@ -39,7 +45,7 @@ function Login({ setJwt, onLoginSuccess }) {
         setPasswordError(null);
         setLoginError(null);
 
-        history.push(`/`);
+        history.push(`${redirecturl ? redirecturl : "/"}`);
       })
       .catch((error) => {
         error.response.data?.errorCode
