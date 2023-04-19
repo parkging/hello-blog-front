@@ -2,7 +2,7 @@ import { Link as Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-function Header({ jwt, onLogout }) {
+function Header({ jwt, onLogout, handleShow }) {
   return (
     <div>
       <nav className="navbar bg-dark" data-bs-theme="dark">
@@ -37,6 +37,7 @@ function Header({ jwt, onLogout }) {
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
+              onClick={() => handleShow()}
             >
               <span className="navbar-toggler-icon"></span>
             </button>

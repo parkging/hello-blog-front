@@ -64,10 +64,10 @@ function Category() {
           </ul>
         </div>
       ) : (
-        <div>
+        <div className="mt-2">
           <Link className={styles.noTextDecoration} to={"/boarder"}>
             <strong
-              className="d-none d-md-block h7 my-2 mt-4"
+              className=" d-md-block h7 my-2 mt-4"
               style={{ cursor: "pointer" }}
               // onClick="|location.href='@{/}'|"
             >
@@ -80,7 +80,7 @@ function Category() {
               </span>
             </strong>
           </Link>
-          <hr className="d-none d-md-block my-2" />
+          <hr className=" d-md-block my-2" />
           {categories.map((category) => {
             return (
               <ul key={category.id} className="list-group list-group-flush">

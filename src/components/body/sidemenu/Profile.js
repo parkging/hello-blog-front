@@ -1,6 +1,6 @@
 function Profile() {
   return (
-    <div>
+    <div className="my-2">
       <div id="frag_profile" className="row">
         <div className="card mx-auto" style={{ width: "18rem" }}>
           <img

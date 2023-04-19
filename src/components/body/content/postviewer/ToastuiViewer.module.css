@@ -1,15 +1,15 @@
 .postViewer > div > div {
   min-height: 600px;
-  font-size: 18px !important;
+  font-size: 15px !important;
 }
 .postEditor > div > div {
   min-height: 600px;
-  font-size: 18px !important;
+  font-size: 15px !important;
 }
 .postEditor > div > div > div > div > div > div > div > div {
-  font-size: 17px !important;
+  font-size: 15px !important;
 }
 
 .ProseMirror {
-  font-size: 17px !important;
+  font-size: 15px !important;
 }
