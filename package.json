@@ -1,5 +1,5 @@
 {
-  "name": "hello-react",
+  "name": "blog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -94,7 +94,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://parkging.github.io/hello-react",
   "jest": {
     "roots": [
       "<rootDir>/src"
