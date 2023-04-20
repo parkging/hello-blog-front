@@ -15,6 +15,10 @@ function App() {
   const [isRefreshTokenExist, setIsRefreshTokenExist] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["refreshExpireTime"]);
 
+  const changeTitle = (titleText) => {
+    document.querySelector("title").text = titleText;
+  };
+
   const onLoginSuccess = (response) => {
     const accessToken = response.headers.get("authorization");
 
@@ -75,10 +79,14 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login">
-          <Login setJwt={setJwt} onLoginSuccess={onLoginSuccess}></Login>
+          <Login
+            setJwt={setJwt}
+            onLoginSuccess={onLoginSuccess}
+            changeTitle={changeTitle}
+          ></Login>
         </Route>
         <Route path="/signup">
-          <Signup></Signup>
+          <Signup changeTitle={changeTitle}></Signup>
         </Route>
         <Route path="/categoryedit">
           <CategoryEdit></CategoryEdit>
@@ -87,7 +95,12 @@ function App() {
           <CategoryAdd></CategoryAdd>
         </Route>
         <Route path="/*">
-          <Home jwt={jwt} onLogout={onLogout} member={member} />
+          <Home
+            jwt={jwt}
+            onLogout={onLogout}
+            member={member}
+            changeTitle={changeTitle}
+          />
         </Route>
       </Switch>
     </Router>

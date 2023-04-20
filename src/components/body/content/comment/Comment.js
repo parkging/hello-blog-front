@@ -1,7 +1,6 @@
 import axios from "axios";
 import { DiscussionEmbed } from "disqus-react";
 function Comment({ post }) {
-  console.log(window.location.href);
   return (
     <div className="row mt-5">
       <br />

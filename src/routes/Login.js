@@ -1,7 +1,8 @@
 import { Link as Link, useHistory, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-function Login({ setJwt, onLoginSuccess }) {
+import { useEffect } from "react";
+function Login({ setJwt, onLoginSuccess, changeTitle }) {
   const history = useHistory();
   const redirecturl = new URLSearchParams(useLocation().search).get(
     "redirecturl"
@@ -12,8 +13,9 @@ function Login({ setJwt, onLoginSuccess }) {
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
 
-  // console.log(window.location.href + useLocation().search);
-  console.log(axios.defaults.baseURL);
+  useEffect(() => {
+    changeTitle("로그인");
+  }, []);
 
   const validateCheck = () => {
     if (email.length < 5) {

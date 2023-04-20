@@ -4,11 +4,12 @@ import Header from "../components/header/Header";
 import Body from "../components/body/Body";
 import Footer from "../components/footer/Footer";
 
-function Home({ jwt, onLogout, member }) {
+function Home({ jwt, onLogout, member, changeTitle }) {
   const [sideMenuShow, setSideMenuShow] = useState(false);
 
   const handleClose = () => setSideMenuShow(false);
   const handleShow = () => setSideMenuShow(true);
+
   return (
     <div>
       <div className={styles.home}>
@@ -21,6 +22,7 @@ function Home({ jwt, onLogout, member }) {
             member={member}
             sideMenuShow={sideMenuShow}
             handleClose={handleClose}
+            changeTitle={changeTitle}
           />
         </div>
         <div className={styles.footer}>

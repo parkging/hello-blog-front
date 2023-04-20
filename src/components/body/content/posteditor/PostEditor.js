@@ -6,7 +6,7 @@ import ToastuiEditor from "./ToastuiEditor";
 import PostEditorHeader from "./PostEditorHeader";
 import PostEditorFooter from "./PostEditorFooter";
 
-function PostEditor({ member }) {
+function PostEditor({ member, changeTitle }) {
   const history = useHistory();
   const location = useLocation();
   const { postId } = useParams();
@@ -66,6 +66,9 @@ function PostEditor({ member }) {
    * 최초 Mount시 이벤트
    **/
   useEffect(() => {
+    const title = method === "PATCH" ? "게시글 수정" : "게시글 작성";
+    changeTitle(title);
+
     if (method === "PATCH") {
       getPost();
     } else if (method === "POST") {

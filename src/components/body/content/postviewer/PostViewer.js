@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 
-function PostViewer({ jwt }) {
+function PostViewer({ jwt, changeTitle }) {
   const { postId } = useParams();
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(true);
@@ -32,9 +32,14 @@ function PostViewer({ jwt }) {
   };
 
   useEffect(() => {
+    changeTitle("게시글");
     getPost();
     return () => {};
   }, []);
+
+  useEffect(() => {
+    changeTitle(post.title);
+  }, [post]);
 
   return (
     <div className="h-100">

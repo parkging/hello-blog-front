@@ -1,8 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
-function Signup() {
+function Signup({ changeTitle }) {
   const history = useHistory();
 
   const [email, setEmail] = useState("");
@@ -14,6 +15,10 @@ function Signup() {
   const [passwordError, setPasswordError] = useState(null);
   const [passwordConfirmError, setPasswordConfirmError] = useState(null);
   const [signupError, setSignupError] = useState(null);
+
+  useEffect(() => {
+    changeTitle("회원가입");
+  }, []);
 
   const validateCheck = () => {
     if (email.length < 5) {
@@ -74,7 +79,6 @@ function Signup() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("onSubmit");
     validateCheck();
     onSignin(email, name, password, passwordConfirm);
   };

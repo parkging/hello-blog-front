@@ -2,13 +2,13 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Boarder from "./boarder/Boarder";
 import PostViewer from "./postviewer/PostViewer";
 import PostEditor from "./posteditor/PostEditor";
-function Content({ jwt, member }) {
+function Content({ jwt, member, changeTitle }) {
   return (
     <Switch>
       <Route path="/post/:postId/edit">
         <div className="col-lg-9 col-md-12">
           {jwt ? (
-            <PostEditor member={member} />
+            <PostEditor member={member} changeTitle={changeTitle} />
           ) : (
             <Redirect to={`/login?redirecturl=${window.location.pathname}`} />
           )}
@@ -17,7 +17,7 @@ function Content({ jwt, member }) {
       <Route path="/post/add">
         <div className="col-lg-9 col-md-12">
           {jwt ? (
-            <PostEditor member={member} />
+            <PostEditor member={member} changeTitle={changeTitle} />
           ) : (
             <Redirect to={`/login?redirecturl=${window.location.pathname}`} />
           )}
@@ -25,12 +25,12 @@ function Content({ jwt, member }) {
       </Route>
       <Route path="/post/:postId">
         <div className="col-lg-9 col-md-12">
-          <PostViewer jwt={jwt} />
+          <PostViewer jwt={jwt} changeTitle={changeTitle} />
         </div>
       </Route>
       <Route path="/boarder/:category/:page">
         <div className="col-lg-9 col-md-12">
-          <Boarder jwt={jwt} />
+          <Boarder jwt={jwt} changeTitle={changeTitle} />
         </div>
       </Route>
       {/* <Route path="/boarder/전체/1">

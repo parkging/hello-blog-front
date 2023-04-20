@@ -2,7 +2,6 @@ import { useState } from "react";
 function CategoryAdd({ setModalOpen, addCategory, parentPostCategoryId }) {
   const [error, setError] = useState(null);
   const [categoryName, setCategoryName] = useState({});
-  console.log("parentPostCategoryId=" + parentPostCategoryId);
   return (
     <div className="d-flex flex-column justify-content-center align-items-center h-100 bg-dark text-dark bg-opacity-10">
       <div className="form-floating d-flex flex-row align-items-center w-75">

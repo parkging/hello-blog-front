@@ -15,7 +15,6 @@ function ToastuiEditor({ content, setPost }) {
         content: editorRef.current?.getInstance().getMarkdown(),
       };
     });
-    console.dir();
   };
   return (
     <div className={styles.postEditor}>
