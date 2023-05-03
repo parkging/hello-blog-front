@@ -39,8 +39,15 @@ function App() {
     setTimeout(onSilentRefresh, payload.expire_millisecond - 10000);
   };
 
+  const removeRefreshExpireTime = () => {
+    document.cookie = "refreshExpireTime=; expires=0; path=/;";
+  };
+
   const onLogout = () => {
-    removeCookie("refreshExpireTime");
+    // URL이 2 뎁스 이상인 경우 동작하지 않음; https://github.com/reactivestack/cookies/issues/346
+    // removeCookie("refreshExpireTime");
+    removeRefreshExpireTime();
+    console.log("refreshExpireTime will be removted");
     setJwt(null);
   };
 
@@ -57,6 +64,9 @@ function App() {
           if (!!errorCode) {
             setJwt(null);
             setIsRefreshTokenExist(false);
+            // URL이 2 뎁스 이상인 경우 동작하지 않음; https://github.com/reactivestack/cookies/issues/346
+            // removeCookie("refreshExpireTime");
+            removeRefreshExpireTime();
             alert(error.response.data.message);
           }
 
