@@ -1,15 +1,19 @@
 .postViewer > div > div {
   min-height: 600px;
   font-size: 16px !important;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .postEditor > div > div {
   min-height: 600px;
   font-size: 16px !important;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .postEditor > div > div > div > div > div > div > div > div {
   font-size: 16px !important;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .ProseMirror {
   font-size: 16px !important;
+  font-family: "Noto Sans KR", sans-serif;
 }
