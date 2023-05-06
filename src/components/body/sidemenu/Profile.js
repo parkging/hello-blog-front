@@ -10,7 +10,7 @@ function Profile() {
           />
           <div className="card-body">
             <h5 className="card-title">박깅이</h5>
-            <p className="card-text">도전하는 개발자!!</p>
+            <p className="card-text">도전하는 개발자!</p>
             <a
               href="https://github.com/parkging"
               target="_blank"
