@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Prepared Source') {
             steps {
-                git branch: 'dev', credentialsId: 'parkging', url: 'https://github.com/parkging/hello-react'
+                git branch: 'dev', credentialsId: 'parkging', url: 'https://github.com/parkging/hello-blog-front'
             }
         }
         stage('Build') {
@@ -43,7 +43,7 @@ pipeline {
                                     makeEmptyDirs: false, 
                                     noDefaultExcludes: false, 
                                     patternSeparator: '[, ]+', 
-                                    remoteDirectory: 'blog/docker-frontend/', 
+                                    remoteDirectory: 'blog/frontend/', 
                                     remoteDirectorySDF: false, 
                                     removePrefix: '', 
                                     sourceFiles: ''
@@ -52,7 +52,7 @@ pipeline {
                                     cleanRemote: false, 
                                     excludes: '', 
                                     execCommand: '''
-                                                cd blog/docker-frontend/
+                                                cd blog/frontend/
                                                 tar -xf build.tar
                                                 docker-compose down && docker-compose up -d
                                                 ''', 
@@ -61,7 +61,7 @@ pipeline {
                                     makeEmptyDirs: false, 
                                     noDefaultExcludes: false, 
                                     patternSeparator: '[, ]+', 
-                                    remoteDirectory: 'blog/docker-frontend/', 
+                                    remoteDirectory: 'blog/frontend/', 
                                     remoteDirectorySDF: false, 
                                     removePrefix: '', 
                                     sourceFiles: 'build.tar'
