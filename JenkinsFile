@@ -14,7 +14,7 @@ pipeline {
                 }
             }
             steps {
-                sh '''cd /var/jenkins_home/workspace/blog-frontend/
+                sh '''cd /var/jenkins_home/workspace/blog-frontend/ 
                 pwd && ls
                 npm install --force, or --legacy-peer-deps
                 npm run build:dev
