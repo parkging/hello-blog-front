@@ -3,9 +3,9 @@ function PostEditorFooter({ savePost, deletePost }) {
   const history = useHistory();
 
   return (
-    <div className="row w-100 my-2 ">
-      <div className="d-flex flex-row justify-content-end ">
-        <div className=" me-2">
+    <div className="row w-100 my-2">
+      <div className="d-flex flex-row justify-content-end">
+        <div className="me-2">
           <button
             type="button"
             onClick={savePost}
@@ -15,9 +15,10 @@ function PostEditorFooter({ savePost, deletePost }) {
           </button>
         </div>
 
-        <div>
+        <div className="me-2">
           <button
-            className="btn btn-danger me-2"
+            type="button"
+            className="btn btn-danger"
             onClick={() => {
               deletePost();
             }}
@@ -26,7 +27,7 @@ function PostEditorFooter({ savePost, deletePost }) {
           </button>
         </div>
 
-        <div className=" me-2">
+        <div className="me-2">
           <button
             type="button"
             onClick={() => {
