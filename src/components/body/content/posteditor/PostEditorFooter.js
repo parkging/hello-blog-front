@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-function PostEditorFooter({ savePost }) {
+function PostEditorFooter({ savePost, deletePost }) {
   const history = useHistory();
 
   return (
@@ -14,6 +14,16 @@ function PostEditorFooter({ savePost }) {
             저장
           </button>
         </div>
+
+        <div
+          className="btn btn-danger mx-2"
+          onClick={() => {
+            deletePost();
+          }}
+        >
+          삭제하기
+        </div>
+
         <div className=" me-2">
           <button
             type="button"
