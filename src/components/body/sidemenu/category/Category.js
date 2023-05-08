@@ -26,7 +26,7 @@ function Category() {
 
   useEffect(() => {
     getCategories();
-  }, []);
+  });
 
   return (
     <div className="mt-1 row">
