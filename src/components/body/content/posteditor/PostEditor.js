@@ -33,7 +33,9 @@ function PostEditor({ member, changeTitle }) {
     })
       .then((response) => {
         const postId = response.data;
-        history.push(`/post/${postId}`);
+        // history.push(`/post/${postId}`);
+        //페이지 다시 랜더링
+        window.location.href = `/post/${postId}`;
       })
       .catch((error) => {
         error.response.data?.errorCode

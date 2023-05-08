@@ -1,6 +1,5 @@
 import Profile from "./Profile";
 import Category from "./category/Category";
-import CategoryNavi from "./category/CategoryNavi";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 function SideMenu({ sideMenuShow, handleClose }) {
