@@ -1,11 +1,11 @@
 import { useHistory } from "react-router-dom";
-function PostEditorFooter({ savePost }) {
+function PostEditorFooter({ savePost, deletePost, method }) {
   const history = useHistory();
 
   return (
-    <div className="row w-100 my-2 ">
-      <div className="d-flex flex-row justify-content-end ">
-        <div className=" me-2">
+    <div className="row w-100 my-2">
+      <div className="d-flex flex-row justify-content-end">
+        <div className="me-2">
           <button
             type="button"
             onClick={savePost}
@@ -14,7 +14,24 @@ function PostEditorFooter({ savePost }) {
             저장
           </button>
         </div>
-        <div className=" me-2">
+
+        {method === "PATCH" ? (
+          <div className="me-2">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => {
+                deletePost();
+              }}
+            >
+              삭제하기
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+
+        <div className="me-2">
           <button
             type="button"
             onClick={() => {

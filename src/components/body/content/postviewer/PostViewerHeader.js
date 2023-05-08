@@ -18,13 +18,15 @@ function PostViewerHeader({ post, jwt }) {
           if="${session.loginMember}"
         >
           {jwt ? (
-            <Link
-              type="button"
-              className="btn btn-secondary"
-              to={`/post/${postId}/edit`}
-            >
-              수정하기
-            </Link>
+            <div>
+              <Link
+                type="button"
+                className="btn btn-secondary"
+                to={`/post/${postId}/edit`}
+              >
+                수정하기
+              </Link>
+            </div>
           ) : (
             ""
           )}

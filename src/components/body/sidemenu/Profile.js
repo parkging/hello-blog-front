@@ -19,7 +19,7 @@ function Profile() {
               github.
             </a>
             <a
-              href="https://parkging.notion.site/parkging/Park-JunYoung-df66f129dd78442e9a84c3980174c6e5"
+              href="https://portfolio.parkging.com"
               target="_blank"
               className="card-link"
             >

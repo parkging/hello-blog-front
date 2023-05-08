@@ -45,6 +45,21 @@ function PostEditor({ member, changeTitle }) {
       });
   };
 
+  const deletePost = () => {
+    axios
+      .delete(`/posts/${postId}`)
+      .then((response) => {
+        window.location.href = `/`;
+      })
+      .catch((error) => {
+        error.response.data?.errorCode
+          ? setError(error.response.data?.message)
+          : setError(error.message);
+        setLoading(false);
+        console.log("at PostEditor.js fetch data fail " + error);
+      });
+  };
+
   /**
    * GET으로 Post 조회
    **/
@@ -110,7 +125,11 @@ function PostEditor({ member, changeTitle }) {
                 content={post?.content}
                 setPost={setPost}
               ></ToastuiEditor>
-              <PostEditorFooter savePost={savePost}></PostEditorFooter>
+              <PostEditorFooter
+                savePost={savePost}
+                deletePost={deletePost}
+                method={method}
+              ></PostEditorFooter>
             </div>
           )}
         </div>
