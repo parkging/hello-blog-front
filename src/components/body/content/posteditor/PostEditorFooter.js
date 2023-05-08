@@ -15,13 +15,15 @@ function PostEditorFooter({ savePost, deletePost }) {
           </button>
         </div>
 
-        <div
-          className="btn btn-danger mx-2"
-          onClick={() => {
-            deletePost();
-          }}
-        >
-          삭제하기
+        <div>
+          <button
+            className="btn btn-danger me-2"
+            onClick={() => {
+              deletePost();
+            }}
+          >
+            삭제하기
+          </button>
         </div>
 
         <div className=" me-2">
