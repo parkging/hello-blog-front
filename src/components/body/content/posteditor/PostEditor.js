@@ -128,6 +128,7 @@ function PostEditor({ member, changeTitle }) {
               <PostEditorFooter
                 savePost={savePost}
                 deletePost={deletePost}
+                method={method}
               ></PostEditorFooter>
             </div>
           )}
