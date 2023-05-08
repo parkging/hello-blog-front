@@ -1,7 +1,10 @@
 function Footer() {
   return (
-    <div>
-      <footer className="bd-footer mt-5 bg-body-tertiary d-flex justify-content-center">
+    <div style={{ height: "100px" }}>
+      <footer
+        className="bd-footer bg-body-tertiary d-flex justify-content-center"
+        style={{ height: "100px" }}
+      >
         <div className="container my-auto text-body-secondary">
           <div className="row">
             <div className="footer_div">
