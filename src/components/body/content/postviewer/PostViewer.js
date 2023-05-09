@@ -39,7 +39,12 @@ function PostViewer({ jwt, changeTitle, changeOgMeta }) {
 
   useEffect(() => {
     changeTitle(post.title);
-    changeOgMeta(post.title, post.preview, post.thumbnailImageUrl);
+    changeOgMeta(
+      post.title,
+      post.preview,
+      post.thumbnailImageUrl,
+      post.preview
+    );
   }, [post]);
 
   return (
