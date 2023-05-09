@@ -20,9 +20,9 @@ function Boarder({ jwt, changeTitle }) {
   const [error, setError] = useState(null);
 
   //한페이지에 보여줄 포스트 개수
-  const postForPageSize = 5;
+  const postForPageSize = 7;
   //한번에 보여줄 페이지 갯수 (ex 5 : 1-5, 6-10, ..)
-  const pageViewCount = 5;
+  const pageViewCount = 7;
   //한번에 가져올 데이터 개수
   const fetchMaxSize = postForPageSize;
 
@@ -97,7 +97,7 @@ function Boarder({ jwt, changeTitle }) {
       <div id="frag_boarder" className="">
         <div className="row mx-auto">
           {loading ? (
-            <div className="list-group" style={{ minHeight: "760px" }}>
+            <div className="list-group" style={{ minHeight: "930px" }}>
               <p className="mx-auto my-auto">{error ? error : ""}</p>
             </div>
           ) : (

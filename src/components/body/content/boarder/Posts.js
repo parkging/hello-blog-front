@@ -27,7 +27,10 @@ function Posts({ posts, loading, error, postCount }) {
                     <div className="d-flex w-100 justify-content-between mb-1 mt-2">
                       <h5 className="mb-1">{post.title}</h5>
                     </div>
-                    <p className="mb-1" style={{ overflow: "hidden" }}>
+                    <p
+                      className="mb-1"
+                      style={{ overflow: "hidden", fontSize: "15px" }}
+                    >
                       {post.preview}
                     </p>
                     <small className="text-muted">{post.memberName}</small>

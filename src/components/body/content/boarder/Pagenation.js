@@ -37,7 +37,7 @@ function Pagenation({
   }, []);
 
   return (
-    <div className="d-flex justify-content-center mt-4">
+    <div className="d-flex justify-content-center my-5">
       <div
         className="btn-group me-2 mt-2"
         role="group"
