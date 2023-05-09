@@ -5,7 +5,7 @@ import Pagenation from "./Pagenation";
 import BoarderHeader from "./BoarderHeader";
 import axios from "axios";
 
-function Boarder({ jwt, changeTitle }) {
+function Boarder({ jwt, changeTitle, changeOgMeta }) {
   const { category, page } = useParams();
   const [posts, setPosts] = useState([]);
   const [postCount, setPostCount] = useState(0);
@@ -85,6 +85,7 @@ function Boarder({ jwt, changeTitle }) {
 
   useEffect(() => {
     changeTitle("박깅이의 블로그");
+    changeOgMeta("박깅이의 블로그", "도전하는 개발자의 블로그", "/profile.jpg");
   }, []);
 
   return (

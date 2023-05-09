@@ -19,6 +19,18 @@ function App() {
     document.querySelector("title").text = titleText;
   };
 
+  const changeOgMeta = (ogTitle, ogDescription, ogImage) => {
+    if (!!ogTitle) {
+      document.querySelector("#og-title").content = ogTitle;
+    }
+    if (!!ogDescription) {
+      document.querySelector("#og-description").content = ogDescription;
+    }
+    if (!!ogImage) {
+      document.querySelector("#og-image").content = ogImage;
+    }
+  };
+
   const onLoginSuccess = (response) => {
     const accessToken = response.headers.get("authorization");
 
@@ -110,6 +122,7 @@ function App() {
             onLogout={onLogout}
             member={member}
             changeTitle={changeTitle}
+            changeOgMeta={changeOgMeta}
           />
         </Route>
       </Switch>
