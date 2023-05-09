@@ -78,9 +78,9 @@
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
     "build": "env-cmd -f .env.local react-scripts build",
-    "build:wsl": "npm run sitemap && CI=false env-cmd -f .env.wsl react-scripts build",
-    "build:dev": "npm run sitemap && CI=false env-cmd -f .env.dev react-scripts build",
-    "build:prod": "npm run sitemap && CI=false env-cmd -f .env.prod react-scripts build",
+    "build:wsl": "CI=false env-cmd -f .env.wsl react-scripts build",
+    "build:dev": "CI=false env-cmd -f .env.dev react-scripts build",
+    "build:prod": "CI=false env-cmd -f .env.prod react-scripts build",
     "test": "node scripts/test.js",
     "deploy": "gh-pages -d build",
     "sitemap": "set NODE_ENV=development&&babel-node ./src/sitemap/generateSitemap",
