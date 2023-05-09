@@ -85,7 +85,12 @@ function Boarder({ jwt, changeTitle, changeOgMeta }) {
 
   useEffect(() => {
     changeTitle("박깅이의 블로그");
-    changeOgMeta("박깅이의 블로그", "도전하는 개발자의 블로그", "/profile.jpg");
+    changeOgMeta(
+      "박깅이의 블로그",
+      "도전하는 개발자 박깅이의 블로그",
+      "/profile.jpg",
+      "도전하는 개발자 박깅이의 블로그"
+    );
   }, []);
 
   return (

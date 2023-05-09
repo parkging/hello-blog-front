@@ -19,7 +19,7 @@ function App() {
     document.querySelector("title").text = titleText;
   };
 
-  const changeOgMeta = (ogTitle, ogDescription, ogImage) => {
+  const changeOgMeta = (ogTitle, ogDescription, ogImage, description) => {
     if (!!ogTitle) {
       document.querySelector("#og-title").content = ogTitle;
     }
@@ -28,6 +28,9 @@ function App() {
     }
     if (!!ogImage) {
       document.querySelector("#og-image").content = ogImage;
+    }
+    if (!!description) {
+      document.querySelector("#description").content = description;
     }
   };
 
