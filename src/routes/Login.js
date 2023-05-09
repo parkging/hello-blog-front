@@ -75,10 +75,15 @@ function Login({ setJwt, onLoginSuccess, changeTitle }) {
       }}
     >
       <main
-        className="form-signin w-25 m-auto align-item-center"
+        className="form-signin w-50 m-auto align-item-center"
         style={{ height: "100wh" }}
       >
-        <div action="login-form.html" method="post" object="${loginForm}">
+        <div
+          action="login-form.html"
+          method="post"
+          object="${loginForm}"
+          style={{ minWidth: "200px" }}
+        >
           <h1 className="d-flex justify-content-center h3 mb-3 fw-normal">
             Please sign in
           </h1>
@@ -147,15 +152,16 @@ function Login({ setJwt, onLoginSuccess, changeTitle }) {
           </div> 
           */}
 
-          <div className="row mt-1">
+          <div className="d-flex justify-content-center row mt-1 mx-auto">
             <a
               className="d-flex justify-content-center"
               // className="w-25 btn btn-lg btn-secondary mx-auto"
               href={`${axios.defaults.baseURL}/oauth2/authorization/google`}
+              style={{ height: "80px", width: "330px" }}
             >
               <img
-                className="w-75"
-                src="https://developers.google.com/static/identity/images/btn_google_signin_light_normal_web.png?hl=ko"
+                // src="https://developers.google.com/static/identity/images/btn_google_signin_light_normal_web.png?hl=ko"
+                src="/btn_google_signin_light_normal_web@2x.png"
               ></img>
             </a>
             {/* <a
