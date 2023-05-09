@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 
-function PostViewer({ jwt, changeTitle }) {
+function PostViewer({ jwt, changeTitle, changeOgMeta }) {
   const { postId } = useParams();
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(true);
@@ -39,6 +39,7 @@ function PostViewer({ jwt, changeTitle }) {
 
   useEffect(() => {
     changeTitle(post.title);
+    changeOgMeta(post.title, post.preview, post.thumbnailImageUrl);
   }, [post]);
 
   return (

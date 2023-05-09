@@ -2,7 +2,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Boarder from "./boarder/Boarder";
 import PostViewer from "./postviewer/PostViewer";
 import PostEditor from "./posteditor/PostEditor";
-function Content({ jwt, member, changeTitle }) {
+function Content({ jwt, member, changeTitle, changeOgMeta }) {
   return (
     <Switch>
       <Route path="/post/:postId/edit">
@@ -25,12 +25,20 @@ function Content({ jwt, member, changeTitle }) {
       </Route>
       <Route path="/post/:postId">
         <div className="col-lg-9 col-md-12">
-          <PostViewer jwt={jwt} changeTitle={changeTitle} />
+          <PostViewer
+            jwt={jwt}
+            changeTitle={changeTitle}
+            changeOgMeta={changeOgMeta}
+          />
         </div>
       </Route>
       <Route path="/boarder/:category/:page">
         <div className="col-lg-9 col-md-12">
-          <Boarder jwt={jwt} changeTitle={changeTitle} />
+          <Boarder
+            jwt={jwt}
+            changeTitle={changeTitle}
+            changeOgMeta={changeOgMeta}
+          />
         </div>
       </Route>
       {/* <Route path="/boarder/전체/1">

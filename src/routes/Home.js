@@ -4,7 +4,7 @@ import Header from "../components/header/Header";
 import Body from "../components/body/Body";
 import Footer from "../components/footer/Footer";
 
-function Home({ jwt, onLogout, member, changeTitle }) {
+function Home({ jwt, onLogout, member, changeTitle, changeOgMeta }) {
   const [sideMenuShow, setSideMenuShow] = useState(false);
 
   const handleClose = () => setSideMenuShow(false);
@@ -23,6 +23,7 @@ function Home({ jwt, onLogout, member, changeTitle }) {
             sideMenuShow={sideMenuShow}
             handleClose={handleClose}
             changeTitle={changeTitle}
+            changeOgMeta={changeOgMeta}
           />
         </div>
         <div className={styles.footer}>
