@@ -55,6 +55,9 @@ function App() {
   };
 
   const removeRefreshExpireTime = () => {
+    let tmpCookie = `refreshExpireTime=; expires=0; path=/; Domain=${axios.defaults.cookieURL}`;
+    console.log(tmpCookie);
+    console.log(axios.defaults.cookieURL);
     document.cookie = `refreshExpireTime=; expires=0; path=/; Domain=${axios.defaults.cookieURL}`;
   };
 
