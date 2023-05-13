@@ -62,11 +62,19 @@ function App() {
   };
 
   const onLogout = () => {
-    // URL이 2 뎁스 이상인 경우 동작하지 않음; https://github.com/reactivestack/cookies/issues/346
-    // removeCookie("refreshExpireTime");
-    removeRefreshExpireTime();
-    console.log("refreshExpireTime will be removted");
-    setJwt(null);
+    axios
+      .post("/log-out")
+      .then((response) => {
+        const accessToken = response.headers.get("authorization");
+        axios.defaults.headers.common["Authorization"] = `${accessToken}`;
+        setIsRefreshTokenExist(false);
+
+        setJwt(null);
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.log("logout fail" + error);
+      });
   };
 
   const onSilentRefresh = () => {
@@ -84,7 +92,8 @@ function App() {
             setIsRefreshTokenExist(false);
             // URL이 2 뎁스 이상인 경우 동작하지 않음; https://github.com/reactivestack/cookies/issues/346
             // removeCookie("refreshExpireTime");
-            removeRefreshExpireTime();
+            // removeRefreshExpireTime();
+            onLogout();
             alert(error.response.data.message);
           }
 
