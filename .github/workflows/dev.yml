@@ -1,0 +1,37 @@
+name: Build and Deploy Dev Branch
+
+on:
+  push:
+    branches:
+      - dev
+
+env:
+  AWS_REGION: ap-south-1  # 뭄바이
+  S3_BUCKET_NAME: parkging-blog-dev-frontend
+  OP_ENV: dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.15
+      - name: Build
+        run: |
+          npm install --force or --legacy-peer-deps
+          npm run build:${{ env.OP_ENV }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: deploy
+        run:
+          aws s3 sync ./build/ s3://${{ env.S3_BUCKET_NAME }}/ --delete
