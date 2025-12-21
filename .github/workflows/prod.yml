@@ -1,0 +1,57 @@
+name: Build and Deploy Prod Branch
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.15
+
+      - name: Install & Build
+        run: |
+          npm install --legacy-peer-deps
+          npm run build:prod
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      # 서버 중단
+      - name: Docker Compose Down
+        run: |
+          sshpass -p "${{ secrets.PROD_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+          -p ${{ secrets.PROD_PORT }} \
+          ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} << 'EOF'
+            set -e
+            cd /home/${{ secrets.PROD_USER }}/blog/frontend
+            docker-compose down
+          EOF
+
+      # 빌드 결과물 업로드
+      - name: Upload build files
+        run: |
+          sshpass -p "${{ secrets.PROD_PASSWORD }}" rsync -avz --delete \
+          -e "ssh -o StrictHostKeyChecking=no -p ${{ secrets.PROD_PORT }}" \
+          ./build/ \
+          ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/${{ secrets.PROD_USER }}/blog/frontend/build/
+
+      # 서버 재기동
+      - name: Docker Compose Up
+        run: |
+          sshpass -p "${{ secrets.PROD_PASSWORD }}" ssh -o StrictHostKeyChecking=no \
+          -p ${{ secrets.PROD_PORT }} \
+          ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} << 'EOF'
+            set -e
+            cd /home/${{ secrets.PROD_USER }}/blog/frontend
+            docker-compose up -d
+          EOF
