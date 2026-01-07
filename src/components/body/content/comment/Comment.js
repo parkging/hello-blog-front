@@ -10,7 +10,7 @@ function Comment({ post }) {
         shortname="test-blog-discus"
         config={{
           url: axios.defaults.discusURL,
-          identifier: window.location.href,
+          identifier: `post-${post.id}`,
           title: post.title,
           language: "ko",
         }}
