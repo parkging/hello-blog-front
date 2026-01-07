@@ -11,7 +11,7 @@ function PostViewerHeader({ post, jwt }) {
           <input type="hidden" id="postId" />
         </div>
         <div className="col">
-          <p text="${postForm.categoryFullName}">일상/여행</p>
+          <p text="${postForm.categoryFullName}">{post.postCategoryName}</p>
         </div>
         <div
           className="col d-flex justify-content-end"
