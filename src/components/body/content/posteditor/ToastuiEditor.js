@@ -2,6 +2,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 import "prismjs/themes/prism.css";
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
+import uml from "@toast-ui/editor-plugin-uml";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all";
 import styles from "../postviewer/ToastuiViewer.module.css";
 import { useRef } from "react";
@@ -25,7 +26,7 @@ function ToastuiEditor({ content, setPost }) {
         hideModeSwitch={true}
         initialEditType="markdown"
         useCommandShortcut={true}
-        plugins={[codeSyntaxHighlight]}
+        plugins={[codeSyntaxHighlight, uml]}
         onBlur={editorChange}
         ref={editorRef}
       />
