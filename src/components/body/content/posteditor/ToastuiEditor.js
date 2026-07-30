@@ -1,8 +1,6 @@
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 import "prismjs/themes/prism.css";
-import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
-import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all";
 import {
   mermaidHTMLRenderer,
   renderMermaid,
@@ -46,7 +44,6 @@ function ToastuiEditor({ content, setPost }) {
         hideModeSwitch={true}
         initialEditType="markdown"
         useCommandShortcut={true}
-        plugins={[codeSyntaxHighlight]}
         customHTMLRenderer={mermaidHTMLRenderer}
         onBlur={editorChange}
         ref={editorRef}
