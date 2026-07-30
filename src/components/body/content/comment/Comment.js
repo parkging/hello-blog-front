@@ -9,8 +9,8 @@ function Comment({ post }) {
       <DiscussionEmbed
         shortname="test-blog-discus"
         config={{
-          url: axios.defaults.discusURL,
-          identifier: `post-${post.id}`,
+          url: `${axios.defaults.discusURL}/post/${post.id}`,
+          identifier: `${axios.defaults.discusURL}/post/${post.id}`,
           title: post.title,
           language: "ko",
         }}

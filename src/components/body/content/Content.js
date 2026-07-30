@@ -23,15 +23,19 @@ function Content({ jwt, member, changeTitle, changeOgMeta }) {
           )}
         </div>
       </Route>
-      <Route path="/post/:postId">
-        <div className="col-lg-9 col-md-12">
-          <PostViewer
-            jwt={jwt}
-            changeTitle={changeTitle}
-            changeOgMeta={changeOgMeta}
-          />
-        </div>
-      </Route>
+      <Route
+        path="/post/:postId"
+        render={({ match }) => (
+          <div className="col-lg-9 col-md-12">
+            <PostViewer
+              key={match.params.postId}
+              jwt={jwt}
+              changeTitle={changeTitle}
+              changeOgMeta={changeOgMeta}
+            />
+          </div>
+        )}
+      />
       <Route path="/boarder/:category/:page">
         <div className="col-lg-9 col-md-12">
           <Boarder
